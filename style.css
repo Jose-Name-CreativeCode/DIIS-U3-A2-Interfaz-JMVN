@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f8;
+  color: #1f2933;
+  line-height: 1.5;
+}
+
+/* Encabezado */
+
+.main-header {
+  background: #0f3d3e;
+  color: white;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.main-header h1 {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.main-header p {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+.user-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-panel select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+}
+
+/* Contenedor general */
+
+.container {
+  width: min(1200px, 94%);
+  margin: 30px auto;
+  display: grid;
+  gap: 24px;
+}
+
+/* Tarjetas */
+
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #0f3d3e;
+}
+
+.card p {
+  color: #5b6770;
+  margin-bottom: 16px;
+}
+
+/* Controles */
+
+.controls-grid,
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #243b53;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 15px;
+  background: white;
+}
+
+input:focus,
+select:focus {
+  outline: 3px solid rgba(15, 61, 62, 0.18);
+  border-color: #0f3d3e;
+}
+
+/* Botones */
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn {
+  border: none;
+  padding: 13px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 130px;
+}
+
+.btn-primary {
+  background: #0f766e;
+  color: white;
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: #1f2933;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Tabla */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 18px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+thead {
+  background: #0f3d3e;
+  color: white;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:hover {
+  background: #f1f5f9;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.status.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Formulario por secciones */
+
+fieldset {
+  border: 1px solid #d1d5db;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 18px;
+}
+
+legend {
+  font-weight: bold;
+  color: #0f3d3e;
+  padding: 0 8px;
+}
+
+/* Totales */
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.total-card {
+  padding: 22px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.total-card h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.total-card p {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.income {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.deduction {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.net {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* Reportes */
+
+.reports-section {
+  border-left: 6px solid #0f766e;
+}
+
+/* Pie de página */
+
+.main-footer {
+  text-align: center;
+  padding: 20px;
+  background: #0f3d3e;
+  color: white;
+  margin-top: 30px;
+}
+
+/* Clases para ocultar por rol con JS */
+
+.hidden {
+  display: none !important;
+}
+
+/* Diseño responsivo para tablet */
+
+@media (max-width: 900px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+  }
+
+  .user-panel {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-panel select {
+    width: 100%;
+  }
+
+  .controls-grid,
+  .form-grid,
+  .totals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 15px;
+  }
+}

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Nómina | Tornillos MX</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div>
+        <h1>Sistema de Nómina</h1>
+        <p>Tornillos MX, S.A. de C.V.</p>
+      </div>
+
+      <div class="user-panel">
+        <label for="roleSelect">Vista de usuario:</label>
+        <select id="roleSelect">
+          <option value="admin">Administrador</option>
+          <option value="rh">Recursos Humanos</option>
+          <option value="contador">Contador</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Panel de controles -->
+      <section class="card controls-section">
+        <div>
+          <h2>Gestión de empleados</h2>
+          <p>
+            Consulta, registra y administra la información básica del personal.
+          </p>
+        </div>
+
+        <div class="controls-grid">
+          <div class="form-group">
+            <label for="searchInput">Buscar empleado</label>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Buscar por nombre o puesto"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="areaFilter">Área</label>
+            <select id="areaFilter">
+              <option value="todos">Todas las áreas</option>
+              <option value="produccion">Producción</option>
+              <option value="administracion">Administración</option>
+              <option value="ventas">Ventas</option>
+              <option value="almacen">Almacén</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contractFilter">Tipo de contrato</label>
+            <select id="contractFilter">
+              <option value="todos">Todos</option>
+              <option value="tiempo-completo">Tiempo completo</option>
+              <option value="medio-tiempo">Medio tiempo</option>
+              <option value="temporal">Temporal</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button id="addBtn" class="btn btn-primary action-admin-rh">
+            Agregar
+          </button>
+
+          <button id="editBtn" class="btn btn-secondary action-admin-rh">
+            Editar
+          </button>
+
+          <button id="deleteBtn" class="btn btn-danger action-admin">
+            Eliminar
+          </button>
+        </div>
+      </section>
+
+      <!-- Listado de empleados -->
+      <section class="card employees-section">
+        <h2>Listado de empleados</h2>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Seleccionar</th>
+                <th>Nombre</th>
+                <th>Puesto</th>
+                <th>Salario base</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+
+            <tbody id="employeeTable">
+              <tr data-area="produccion" data-contract="tiempo-completo">
+                <td>
+                  <input type="radio" name="employee" value="1" />
+                </td>
+                <td>Juan Pérez</td>
+                <td>Operador de producción</td>
+                <td>$12,000.00</td>
+                <td>
+                  <span class="status active">Activo</span>
+                </td>
+              </tr>
+
+              <tr data-area="administracion" data-contract="tiempo-completo">
+                <td>
+                  <input type="radio" name="employee" value="2" />
+                </td>
+                <td>María López</td>
+                <td>Auxiliar administrativo</td>
+                <td>$14,500.00</td>
+                <td>
+                  <span class="status active">Activo</span>
+                </td>
+              </tr>
+
+              <tr data-area="ventas" data-contract="medio-tiempo">
+                <td>
+                  <input type="radio" name="employee" value="3" />
+                </td>
+                <td>Carlos Hernández</td>
+                <td>Ejecutivo de ventas</td>
+                <td>$10,000.00</td>
+                <td>
+                  <span class="status inactive">Inactivo</span>
+                </td>
+              </tr>
+
+              <tr data-area="almacen" data-contract="temporal">
+                <td>
+                  <input type="radio" name="employee" value="4" />
+                </td>
+                <td>Ana Torres</td>
+                <td>Auxiliar de almacén</td>
+                <td>$9,500.00</td>
+                <td>
+                  <span class="status active">Activo</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Formulario organizado por secciones -->
+      <section class="card form-section">
+        <h2>Información del empleado</h2>
+
+        <form id="payrollForm">
+          <fieldset>
+            <legend>Empleado</legend>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="employeeName">Nombre completo</label>
+                <input
+                  type="text"
+                  id="employeeName"
+                  placeholder="Ej. Juan Pérez"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="employeePosition">Puesto</label>
+                <input
+                  type="text"
+                  id="employeePosition"
+                  placeholder="Ej. Operador de producción"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="employeeStatus">Estado</label>
+                <select id="employeeStatus">
+                  <option value="activo">Activo</option>
+                  <option value="inactivo">Inactivo</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Percepciones</legend>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="baseSalary">Salario base</label>
+                <input type="number" id="baseSalary" placeholder="Ej. 12000" />
+              </div>
+
+              <div class="form-group">
+                <label for="bonus">Bonos</label>
+                <input type="number" id="bonus" placeholder="Ej. 1000" />
+              </div>
+
+              <div class="form-group">
+                <label for="extraHours">Horas extra</label>
+                <input type="number" id="extraHours" placeholder="Ej. 500" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Deducciones</legend>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="taxes">Impuestos</label>
+                <input type="number" id="taxes" placeholder="Ej. 1500" />
+              </div>
+
+              <div class="form-group">
+                <label for="insurance">Seguro</label>
+                <input type="number" id="insurance" placeholder="Ej. 500" />
+              </div>
+
+              <div class="form-group">
+                <label for="otherDiscounts">Otros descuentos</label>
+                <input
+                  type="number"
+                  id="otherDiscounts"
+                  placeholder="Ej. 300"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="button-group">
+            <button type="button" id="calculateBtn" class="btn btn-primary">
+              Calcular nómina
+            </button>
+
+            <button type="reset" class="btn btn-secondary">Limpiar</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Visualización de cálculos -->
+      <section class="card totals-section">
+        <h2>Resumen de cálculo</h2>
+
+        <div class="totals-grid">
+          <article class="total-card income">
+            <h3>Sueldo bruto</h3>
+            <p id="grossSalary">$0.00</p>
+          </article>
+
+          <article class="total-card deduction">
+            <h3>Deducciones</h3>
+            <p id="totalDeductions">$0.00</p>
+          </article>
+
+          <article class="total-card net">
+            <h3>Neto por pagar</h3>
+            <p id="netSalary">$0.00</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Reportes visibles según rol -->
+      <section class="card reports-section action-admin-contador">
+        <h2>Reportes</h2>
+        <p>
+          Genera reportes de nómina para revisión administrativa y contable.
+        </p>
+
+        <div class="button-group">
+          <button class="btn btn-primary">Generar reporte</button>
+          <button class="btn btn-secondary">Exportar información</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <p>
+        Jose Manuel Veana Naredo | Sistema de información para la gestión de
+        nómina | Tornillos MX
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
